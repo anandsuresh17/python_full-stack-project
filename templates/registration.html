@@ -5,4 +5,31 @@
 {% block content %}
     <h1>registration Page</h1>
     <p>Welcome to the reg page of this site.</p>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formz</title>
+    <style>
+        span{
+            color: red;
+        }
+                
+    </style>
+</head>
+<body>
+    <h1>employee form</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}  
+    
+    <div>
+        {{forms.as_p}}
+        
+    </div>
+    <button>Submit</button>
+</form>
+
+</body>
+</html>
 {% endblock %}
