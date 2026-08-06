@@ -1,5 +1,7 @@
-from django.shortcuts import render
 
+from django.shortcuts import render,redirect
+from.models import Students
+from .forms import Studentform
 def homepage(request):
     return render(request, "home.html")
 
@@ -10,7 +12,16 @@ def contactpage(request):
     return render(request, "contact.html")
 
 def registrationpage(request):
-    return render(request, "registration.html")
+    if request.method=="POST":
+        form=Studentform(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+
+            # return redirect('emp')
+
+    else:
+        form= Studentform()
+    return render(request,'registration.html',{'forms':form})
 
 def loginpage(request):
     return render(request, "login.html")
