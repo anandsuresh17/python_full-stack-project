@@ -1,0 +1,30 @@
+/* Reset default styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header background */
+header {
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+/* Navbar links */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect */
+nav a:hover {
+    color: #ffcc00;
+}
+
+/* Main content area */
+main {
+    padding: 20px;
+}
