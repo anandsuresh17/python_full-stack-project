@@ -1,4 +1,3 @@
-
 from django import forms
 from .models import Students
 from datetime import date
@@ -6,7 +5,6 @@ from datetime import date
 
 class Studentform(forms.ModelForm):
 
-    # Email belongs to Django User, so we add it manually
     email = forms.EmailField(
         required=True,
         error_messages={
@@ -40,9 +38,6 @@ class Studentform(forms.ModelForm):
             'dob',
             'email',
             'contact_number',
-            'country',
-            'state',
-            'city',
             'hobbies',
             'image',
         ]
@@ -53,7 +48,6 @@ class Studentform(forms.ModelForm):
             ),
         }
 
-    # First name validation
     def clean_fname(self):
         fname = self.cleaned_data['fname'].strip()
 
@@ -69,7 +63,6 @@ class Studentform(forms.ModelForm):
 
         return fname
 
-    # Last name validation
     def clean_sname(self):
         sname = self.cleaned_data['sname'].strip()
 
@@ -85,7 +78,6 @@ class Studentform(forms.ModelForm):
 
         return sname
 
-    # Date of birth validation
     def clean_dob(self):
         dob = self.cleaned_data['dob']
 
@@ -96,7 +88,6 @@ class Studentform(forms.ModelForm):
 
         return dob
 
-    # Phone number validation
     def clean_contact_number(self):
         phone = self.cleaned_data['contact_number'].strip()
 
@@ -112,40 +103,6 @@ class Studentform(forms.ModelForm):
 
         return phone
 
-    # Country validation
-    def clean_country(self):
-        country = self.cleaned_data['country'].strip()
-
-        if not country:
-            raise forms.ValidationError(
-                'Please select a country.'
-            )
-
-        return country
-
-    # State validation
-    def clean_state(self):
-        state = self.cleaned_data['state'].strip()
-
-        if not state:
-            raise forms.ValidationError(
-                'Please select a state.'
-            )
-
-        return state
-
-    # City validation
-    def clean_city(self):
-        city = self.cleaned_data['city'].strip()
-
-        if not city:
-            raise forms.ValidationError(
-                'Please select a city.'
-            )
-
-        return city
-
-    # Image validation
     def clean_image(self):
         image = self.cleaned_data.get('image')
 
@@ -167,4 +124,3 @@ class Studentform(forms.ModelForm):
                 )
 
         return image
-

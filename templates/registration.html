@@ -1,35 +1,173 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+Registration
+{% endblock %}
 
 {% block content %}
-    <h1>registration Page</h1>
-    <p>Welcome to the reg page of this site.</p>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formz</title>
-    <style>
-        span{
-            color: red;
-        }
-                
-    </style>
-</head>
-<body>
-    <h1>employee form</h1>
+
+<style>
+    .errorlist {
+        color: red;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    select:invalid {
+        border: 1px solid red;
+    }
+</style>
+
+<h1>Employee Registration Form</h1>
+
 <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}  
-    
-    <div>
-        {{forms.as_p}}
-        
-    </div>
-    <button>Submit</button>
+
+    {% csrf_token %}
+
+    {{ forms.as_p }}
+
+    <p>
+        <label>Country</label><br>
+
+        <select id="country" name="country" required>
+            <option value="">Select Country</option>
+        </select>
+    </p>
+
+    <p>
+        <label>State</label><br>
+
+        <select id="state" name="state" required>
+            <option value="">Select State</option>
+        </select>
+    </p>
+
+    <p>
+        <label>City</label><br>
+
+        <select id="city" name="city" required>
+            <option value="">Select City</option>
+        </select>
+    </p>
+
+    <button type="submit">Submit</button>
+
 </form>
 
-</body>
-</html>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+
+$(document).ready(function () {
+
+    // Load Countries
+    $.ajax({
+        url: "https://countriesnow.space/api/v0.1/countries/states",
+        type: "GET",
+
+        success: function (response) {
+
+            $.each(response.data, function (index, country) {
+
+                $("#country").append(
+                    "<option value='" + country.name + "'>" +
+                    country.name +
+                    "</option>"
+                );
+
+            });
+
+        }
+    });
+
+
+    // Load States
+    $("#country").change(function () {
+
+        let country = $(this).val();
+
+        $("#state").html(
+            "<option value=''>Select State</option>"
+        );
+
+        $("#city").html(
+            "<option value=''>Select City</option>"
+        );
+
+        $.ajax({
+
+            url: "https://countriesnow.space/api/v0.1/countries/states",
+
+            type: "POST",
+
+            contentType: "application/json",
+
+            data: JSON.stringify({
+                country: country
+            }),
+
+            success: function (response) {
+
+                $.each(response.data.states, function (index, state) {
+
+                    $("#state").append(
+                        "<option value='" + state.name + "'>" +
+                        state.name +
+                        "</option>"
+                    );
+
+                });
+
+            }
+        });
+
+    });
+
+
+    // Load Cities
+    $("#state").change(function () {
+
+        let country = $("#country").val();
+        let state = $("#state").val();
+
+        $("#city").html(
+            "<option value=''>Select City</option>"
+        );
+
+        $.ajax({
+
+            url: "https://countriesnow.space/api/v0.1/countries/state/cities",
+
+            type: "POST",
+
+            contentType: "application/json",
+
+            data: JSON.stringify({
+                country: country,
+                state: state
+            }),
+
+            success: function (response) {
+
+                $.each(response.data, function (index, city) {
+
+                    $("#city").append(
+                        "<option value='" + city + "'>" +
+                        city +
+                        "</option>"
+                    );
+
+                });
+
+            }
+        });
+
+    });
+
+});
+
+</script>
+
 {% endblock %}
