@@ -3,9 +3,10 @@ import requests
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
-from .models import Students
-from .forms import Studentform
+from .models import Students,Contact
+from .forms import Studentform,ContactForm
 def homepage(request):
     return render(request, "home.html")
 
@@ -14,6 +15,10 @@ def aboutpage(request):
 
 def contactpage(request):
     return render(request, "contact.html")
+from django.shortcuts import render
+from .forms import Studentform
+
+
 def registrationpage(request):
 
     if request.method == "POST":
@@ -31,11 +36,14 @@ def registrationpage(request):
             obj.save()
 
     else:
-
         form = Studentform()
 
-    return render( request, 'registration.html', {'forms': form}
+    return render(
+        request,
+        'registration.html',
+        {'forms': form}
     )
+    
 def get_countries(request):
 
     url = "https://countriesnow.space/api/v0.1/countries"
@@ -81,3 +89,23 @@ def loginpage(request):
 
 def sdpage(request):
     return render(request, "sd.html")
+
+
+def contactpage(request):
+
+    if request.method == "POST":
+
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('contact')
+
+    else:
+        form = ContactForm()
+
+    return render(
+        request,
+        'contact.html',
+        {'form': form}
+    )
