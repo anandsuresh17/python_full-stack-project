@@ -1,8 +1,23 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+Contact
+{% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
-    <p>Welcome to the homepage of this site.</p>
+
+<h1>Contact Us</h1>
+
+<form method="POST">
+
+```
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">Submit</button>
+```
+
+</form>
+
 {% endblock %}
