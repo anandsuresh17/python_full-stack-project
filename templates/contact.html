@@ -1,22 +1,22 @@
 {% extends 'layout.html' %}
 
-{% block title %}
-Contact
-{% endblock %}
-
 {% block content %}
 
 <h1>Contact Us</h1>
 
-<form method="POST">
+{% if success %} <p>{{ success }}</p>
+{% endif %}
 
-```
-{% csrf_token %}
+{% if error %} <p>{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
 
 {{ form.as_p }}
 
 <button type="submit">Submit</button>
-```
+
 
 </form>
 

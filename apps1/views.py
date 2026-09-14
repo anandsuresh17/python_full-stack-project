@@ -4,6 +4,9 @@ import requests
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.core.mail import EmailMessage
+
 
 from .models import Students,Contact
 from .forms import Studentform,ContactForm
@@ -90,22 +93,62 @@ def loginpage(request):
 def sdpage(request):
     return render(request, "sd.html")
 
-
 def contactpage(request):
 
-    if request.method == "POST":
+    if request.method == 'POST':
 
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return redirect('contact')
+
+            contact_data = form.save()
+
+            try:
+
+                email = EmailMessage(
+                    subject=contact_data.subject,
+                    body=(
+                        f"Name: {contact_data.name}\n"
+                        f"Email: {contact_data.email}\n\n"
+                        f"Message:\n{contact_data.message}"
+                    ),
+                    from_email=settings.EMAIL_HOST_USER,
+                    to=['eduhubarg72@gmail.com'],
+                    reply_to=[contact_data.email],
+                )
+
+                email.send(fail_silently=False)
+
+                return render(
+                    request,
+                    'contact.html',
+                    {
+                        'form': ContactForm(),
+                        'success': 'Your message has been sent successfully.'
+                    }
+                )
+
+            except Exception as e:
+
+                print("EMAIL ERROR:", e)
+
+                return render(
+                    request,
+                    'contact.html',
+                    {
+                        'form': form,
+                        'error': 'Unable to send an email right now. Please try again later.'
+                    }
+                )
 
     else:
+
         form = ContactForm()
 
     return render(
         request,
         'contact.html',
-        {'form': form}
+        {
+            'form': form
+        }
     )
