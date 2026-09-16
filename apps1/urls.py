@@ -7,5 +7,8 @@ urlpatterns = [
     path('contact/', views.contactpage, name='contact'),
     path('registration/', views.registrationpage, name='registration'),
     path('login/', views.loginpage, name='login'),
-    path('sd/', views.sdpage, name='sd'),
-]
+    path('verify-email/<str:token>/',views.verify_email,name='verify_email'),
+    path('new-password/',views.new_password,name='new_password'),
+    path('forgot-password/',views.forgot_password,name='forgot_password'),
+    path('logout/',views.logoutpage,name='logout'),
+    ]
