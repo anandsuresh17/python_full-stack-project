@@ -1,8 +1,224 @@
 {% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Student Dashboard{% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
-    <p>Welcome to the homepage of this site.</p>
+
+<h1>Student Dashboard</h1>
+
+<p>
+    Welcome, {{ request.user.username }}!
+</p>
+
+
+<!-- ========================= -->
+<!-- SEARCH COURSES -->
+<!-- ========================= -->
+
+<h2>Search Courses</h2>
+
+<input
+    type="text"
+    id="searchCourse"
+    placeholder="Search for a course..."
+>
+
+
+<br><br>
+
+
+<!-- ========================= -->
+<!-- AVAILABLE COURSES -->
+<!-- ========================= -->
+
+<h2>Available Courses</h2>
+
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Fee</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody id="courseTable">
+
+        {% for course in courses %}
+
+        <tr>
+            <td>
+                {{ course.course_name }}
+            </td>
+
+            <td>
+                {{ course.duration }}
+            </td>
+
+            <td>
+                ₹{{ course.fee }}
+            </td>
+
+            <td>
+                <a href="{% url 'signup_course' course.id %}">
+                    <button type="button">
+                        Sign Up
+                    </button>
+                </a>
+            </td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="4">
+                No courses available.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+<br><br>
+
+
+<!-- ========================= -->
+<!-- PICKED COURSES -->
+<!-- ========================= -->
+
+<h2>Picked Courses</h2>
+
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Fee</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for enrollment in enrollments %}
+
+        <tr>
+            <td>
+                {{ enrollment.course.course_name }}
+            </td>
+
+            <td>
+                {{ enrollment.course.duration }}
+            </td>
+
+            <td>
+                ₹{{ enrollment.course.fee }}
+            </td>
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="3">
+                You have not signed up for any course yet.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+<br><br>
+
+
+<!-- ========================= -->
+<!-- LOGOUT -->
+<!-- ========================= -->
+
+<a href="{% url 'logout' %}">
+    Logout
+</a>
+
+
+<!-- ========================= -->
+<!-- AJAX SEARCH -->
+<!-- ========================= -->
+
+<script>
+
+const searchInput = document.getElementById("searchCourse");
+
+searchInput.addEventListener("keyup", function() {
+
+    const search = searchInput.value;
+
+    fetch(`/search-courses/?search=${encodeURIComponent(search)}`)
+        .then(response => response.json())
+        .then(data => {
+
+            const table = document.getElementById("courseTable");
+
+            table.innerHTML = "";
+
+            if (data.courses.length === 0) {
+
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="4">
+                            No courses found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+            data.courses.forEach(course => {
+
+                table.innerHTML += `
+                    <tr>
+
+                        <td>
+                            ${course.course_name}
+                        </td>
+
+                        <td>
+                            ${course.duration}
+                        </td>
+
+                        <td>
+                            ₹${course.fee}
+                        </td>
+
+                        <td>
+                            <a href="/signup/${course.id}/">
+                                <button type="button">
+                                    Sign Up
+                                </button>
+                            </a>
+                        </td>
+
+                    </tr>
+                `;
+
+            });
+
+        })
+        .catch(error => {
+            console.error("Search error:", error);
+        });
+
+});
+
+</script>
+
 {% endblock %}

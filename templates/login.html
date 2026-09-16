@@ -1,8 +1,64 @@
-{% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% extends 'layout.html' %}
+
+{% block title %}
+Sign In
+{% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
-    <p>Welcome to the homepage of this site.</p>
+
+<h1>Student Sign In</h1>
+
+{% if success %}
+    <p>{{ success }}</p>
+{% endif %}
+
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Email</label>
+    <input
+        type="email"
+        name="email"
+        required
+    >
+
+    <br><br>
+
+    <label>Password</label>
+    <input
+        type="password"
+        name="password"
+        required
+    >
+
+    <br><br>
+
+    <label>
+        <input
+            type="checkbox"
+            name="remember_me"
+        >
+        Keep me logged in
+    </label>
+
+    <br><br>
+
+    <button type="submit">
+        Sign In
+    </button>
+
+</form>
+
+<p>
+   <a href="{% url 'forgot_password' %}">
+    Forgot Password?
+</a>
+</p>
+
 {% endblock %}
