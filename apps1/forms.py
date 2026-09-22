@@ -2,7 +2,6 @@ from django import forms
 from .models import Students,Contact
 from datetime import date
 
-
 class Studentform(forms.ModelForm):
 
     HOBBY_CHOICES = [
@@ -99,24 +98,27 @@ class Studentform(forms.ModelForm):
         image = self.cleaned_data.get('image')
 
         if image:
-            if image.size > 5 * 1024 * 1024:
-                raise forms.ValidationError(
-                    'Image size must be less than 5 MB.'
-                )
 
-            allowed_types = [
-                'image/jpeg',
-                'image/png',
-                'image/jpg'
-            ]
+            # Existing image does not have content_type
+            if hasattr(image, 'content_type'):
 
-            if image.content_type not in allowed_types:
-                raise forms.ValidationError(
-                    'Only JPG, JPEG and PNG images are allowed.'
-                )
+                if image.size > 5 * 1024 * 1024:
+                    raise forms.ValidationError(
+                        'Image size must be less than 5 MB.'
+                    )
+
+                allowed_types = [
+                    'image/jpeg',
+                    'image/png',
+                    'image/jpg'
+                ]
+
+                if image.content_type not in allowed_types:
+                    raise forms.ValidationError(
+                        'Only JPG, JPEG and PNG images are allowed.'
+                    )
 
         return image
-
 
 class ContactForm(forms.ModelForm):
 

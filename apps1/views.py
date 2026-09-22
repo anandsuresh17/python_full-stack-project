@@ -84,8 +84,8 @@ def contactpage(request):
         'contact.html',
         {
             'form': form
-        }
-    )
+                })
+
 def registrationpage(request):
 
     if request.method == "POST":
@@ -160,9 +160,7 @@ def registrationpage(request):
 
                     # Create Profile
                     Profile.objects.create(
-                        user=user,
-                        phone=student.contact_number,
-                        address=''
+                        user=user
                     )
 
                     print("PROFILE CREATED")
@@ -229,7 +227,7 @@ def registrationpage(request):
                         )
                     }
                 )
-
+    
             except Exception as e:
 
                 print(
@@ -669,3 +667,5 @@ def logoutpage(request):
     logout(request)
 
     return redirect("login")
+
+

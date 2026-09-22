@@ -1,0 +1,51 @@
+import django.db.models.deletion
+from django.conf import settings
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('apps1', '0002_contact_courseslist_remove_students_user_and_more'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='courseslist',
+            name='duration',
+            field=models.CharField(
+                default='not specified',
+                max_length=50
+            ),
+            preserve_default=False,
+        ),
+
+        migrations.AddField(
+            model_name='courseslist',
+            name='fee',
+            field=models.DecimalField(
+                decimal_places=2,
+                default=0,
+                max_digits=10
+            ),
+            preserve_default=False,
+        ),
+
+        migrations.AddField(
+            model_name='students',
+            name='email_verified',
+            field=models.BooleanField(default=False),
+        ),
+
+        migrations.AddField(
+            model_name='students',
+            name='user',
+            field=models.OneToOneField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL
+            ),
+        ),
+    ]

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}Reset Password{% endblock %}
+
+{% block content %}
+
+<h1>Reset Password</h1>
+
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <p>
+        <label for="password">
+            New Password:
+        </label>
+        <br>
+
+        <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter new password"
+            required
+        >
+    </p>
+
+    <p>
+        <label for="confirm_password">
+            Confirm New Password:
+        </label>
+        <br>
+
+        <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Confirm new password"
+            required
+        >
+    </p>
+
+    <button type="submit">
+        Save New Password
+    </button>
+
+</form>
+
+<br>
+
+<a href="{% url 'login' %}">
+    Back to Login
+</a>
+
+{% endblock %}

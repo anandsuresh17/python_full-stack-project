@@ -1,3 +1,4 @@
+```html
 {% extends "layout.html" %}
 
 {% block title %}Student Dashboard{% endblock %}
@@ -12,6 +13,17 @@
 
 
 <!-- ========================= -->
+<!-- PROFILE -->
+<!-- ========================= -->
+
+<a href="{% url 'profile' %}" class="profile-btn">
+    Profile
+</a>
+
+<br><br>
+
+
+<!-- ========================= -->
 <!-- SEARCH COURSES -->
 <!-- ========================= -->
 
@@ -22,7 +34,6 @@
     id="searchCourse"
     placeholder="Search for a course..."
 >
-
 
 <br><br>
 
@@ -49,6 +60,7 @@
         {% for course in courses %}
 
         <tr>
+
             <td>
                 {{ course.course_name }}
             </td>
@@ -68,6 +80,7 @@
                     </button>
                 </a>
             </td>
+
         </tr>
 
         {% empty %}
@@ -99,8 +112,7 @@
     <thead>
         <tr>
             <th>Course Name</th>
-            <th>Duration</th>
-            <th>Fee</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -109,23 +121,27 @@
         {% for enrollment in enrollments %}
 
         <tr>
+
             <td>
                 {{ enrollment.course.course_name }}
             </td>
 
-            <td>
-                {{ enrollment.course.duration }}
-            </td>
+        
 
             <td>
-                ₹{{ enrollment.course.fee }}
+                <a href="{% url 'delete_course' enrollment.id %}">
+                    <button type="button">
+                        Delete
+                    </button>
+                </a>
             </td>
+
         </tr>
 
         {% empty %}
 
         <tr>
-            <td colspan="3">
+            <td colspan="4">
                 You have not signed up for any course yet.
             </td>
         </tr>
@@ -162,7 +178,9 @@ searchInput.addEventListener("keyup", function() {
     const search = searchInput.value;
 
     fetch(`/search-courses/?search=${encodeURIComponent(search)}`)
+
         .then(response => response.json())
+
         .then(data => {
 
             const table = document.getElementById("courseTable");
@@ -200,11 +218,15 @@ searchInput.addEventListener("keyup", function() {
                         </td>
 
                         <td>
+
                             <a href="/signup/${course.id}/">
+
                                 <button type="button">
                                     Sign Up
                                 </button>
+
                             </a>
+
                         </td>
 
                     </tr>
@@ -213,8 +235,11 @@ searchInput.addEventListener("keyup", function() {
             });
 
         })
+
         .catch(error => {
+
             console.error("Search error:", error);
+
         });
 
 });
@@ -222,3 +247,4 @@ searchInput.addEventListener("keyup", function() {
 </script>
 
 {% endblock %}
+```

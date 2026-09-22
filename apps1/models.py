@@ -65,8 +65,7 @@ class Profile(models.Model):
         on_delete=models.CASCADE
     )
 
-    phone = models.CharField(max_length=15)
-    address = models.TextField(blank=True)
+
 
     def __str__(self):
         return self.user.username
