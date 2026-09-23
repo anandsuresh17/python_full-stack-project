@@ -1,13 +1,29 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>{% block title %}My Site{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;1,600;1,700&display=swap" rel="stylesheet">
+    <title>{% block title %}Scope India{% endblock %}</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-    <header>
-        <nav>
+
+    <header class="site-header">
+
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/scope-logo.png' %}" alt="Scope India">
+                <span>SCOPE  INDIA</span>
+            </a>
+        </div>
+
+        <nav class="navbar">
             <a href="{% url 'home' %}">Home</a>
             <a href="{% url 'about' %}">About</a>
             <a href="{% url 'contact' %}">Contact</a>
@@ -15,11 +31,60 @@
             <a href="{% url 'login' %}">Login</a>
             <a href="{% url 'sdpage' %}">Dashboard</a>
         </nav>
+
     </header>
 
+
     <main>
+
         {% block content %}
         {% endblock %}
+
     </main>
+
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h3>Our Vision</h3>
+
+                <p>
+                    To become a trusted destination for technology education,
+                    empowering learners with practical knowledge, industry-relevant
+                    skills, and the confidence to build successful careers in the
+                    digital world.
+                </p>
+            </div>
+
+
+            <div class="footer-section">
+                <h3>Our Mission</h3>
+
+                <p>
+                    To provide accessible, practical, and career-focused training
+                    through experienced guidance, hands-on learning, and
+                    industry-oriented courses that help students transform their
+                    potential into professional skills.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>
+                &copy; 2026 Scope India. All Rights Reserved.
+            </p>
+
+            <p>
+                An initiative of Suffix Solutions.
+            </p>
+        </div>
+
+    </footer>
+
 </body>
+
 </html>

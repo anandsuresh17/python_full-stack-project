@@ -1,0 +1,216 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Java Full Stack Development | Scope India{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/java.css' %}">
+
+<section class="course-detail">
+
+<div class="course-intro">
+
+    <h1>Java Full Stack Development</h1>
+
+    <p>
+        Java Full Stack Development is a career-focused course that covers
+        frontend and backend web development. Students learn Java programming,
+        object-oriented programming, backend development, databases, frontend
+        technologies, APIs, Git, and practical application development.
+    </p>
+
+</div>
+
+
+<h2 class="syllabus-title">Course Syllabus</h2>
+
+<div class="syllabus-container">
+
+    <div class="syllabus-card">
+        <h3>Java Programming</h3>
+        <p>
+            Learn Java fundamentals, syntax, data types, control statements,
+            methods, collections, and exception handling.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Object-Oriented Programming</h3>
+        <p>
+            Understand classes, objects, inheritance, polymorphism,
+            abstraction, encapsulation, and interfaces.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>HTML & CSS</h3>
+        <p>
+            Learn how to create and style responsive web pages
+            using HTML and CSS.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>JavaScript</h3>
+        <p>
+            Learn JavaScript fundamentals and create interactive
+            and dynamic web applications.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Spring Boot</h3>
+        <p>
+            Develop backend applications and REST APIs
+            using the Spring Boot framework.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Database & SQL</h3>
+        <p>
+            Learn relational databases, SQL queries, relationships,
+            and database integration.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>REST APIs</h3>
+        <p>
+            Understand HTTP methods, JSON, API architecture,
+            and communication between applications.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Git & GitHub</h3>
+        <p>
+            Learn version control and manage your development
+            projects using Git and GitHub.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>AI Tools</h3>
+        <p>
+            Learn how modern AI tools can assist with coding,
+            debugging, learning, documentation, and development workflows.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Projects</h3>
+        <p>
+            Apply your knowledge by developing practical
+            full-stack Java applications.
+        </p>
+    </div>
+
+</div>
+
+
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>1. Who can join the Java Full Stack Development course?</h3>
+            <p>
+                The course is suitable for beginners, students, graduates,
+                and anyone interested in learning Java full-stack development.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Do I need prior Java programming experience?</h3>
+            <p>
+                No. The course starts with Java fundamentals and gradually
+                introduces advanced development concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What technologies will I learn?</h3>
+            <p>
+                You will learn Java, Spring Boot, HTML, CSS, JavaScript,
+                SQL, REST APIs, Git, GitHub, and modern AI development tools.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Will I learn Spring Boot?</h3>
+            <p>
+                Yes. Spring Boot is covered for developing backend
+                applications and REST APIs.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Will the course include practical projects?</h3>
+            <p>
+                Yes. The course includes practical exercises and projects
+                to help you apply the concepts you learn.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Will I learn database management?</h3>
+            <p>
+                Yes. You will learn SQL, database concepts, queries,
+                relationships, and application integration.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Will Git and GitHub be included?</h3>
+            <p>
+                Yes. You will learn the basics of Git and GitHub for
+                version control and project management.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. Will AI tools be included in the course?</h3>
+            <p>
+                Yes. The course introduces modern AI tools that can assist
+                with coding, debugging, learning, documentation, and
+                development workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>9. Can beginners build Java web applications?</h3>
+            <p>
+                The course is designed to provide the fundamental skills
+                needed to build full-stack applications through practical
+                learning and projects.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>10. How can I register for the course?</h3>
+            <p>
+                You can register by clicking the Register Now button below
+                and completing the registration form.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="registration-area">
+
+    <a href="{% url 'registration' %}" class="register-btn">
+        Register Now
+    </a>
+
+</div>
+
+</section>
+
+{% endblock %}

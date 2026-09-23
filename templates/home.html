@@ -1,8 +1,55 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+{% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home | Scope India{% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
-    <p>Welcome to the homepage of this site.</p>
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<section class="courses-section">
+
+    <h1>Explore Our Courses</h1>
+
+    <div class="course-container">
+
+        <a href="{% url 'python_course' %}" class="course-card">
+            <img src="{% static 'images/python.png' %}" alt="Python Full Stack Development">
+            <h2>Python Full Stack Development</h2>
+        </a>
+
+        <a href="{% url 'java_course' %}" class="course-card">
+            <img src="{% static 'images/java.png' %}" alt="Java Full Stack Development">
+            <h2>Java Full Stack Development</h2>
+        </a>
+
+        <a href="{% url 'mern_course' %}" class="course-card">
+            <img src="{% static 'images/mern.png' %}" alt="MERN Stack Development">
+            <h2>MERN Stack Development</h2>
+        </a>
+
+        <a href="{% url 'react_course' %}" class="course-card">
+            <img src="{% static 'images/react.png' %}" alt="React JS Development">
+            <h2>React JS Development</h2>
+        </a>
+
+        <a href="{% url 'testing_course' %}" class="course-card">
+            <img src="{% static 'images/testing.png' %}" alt="Software Testing">
+            <h2>Software Testing</h2>
+        </a>
+
+        <a href="{% url 'uiux_course' %}" class="course-card">
+            <img src="{% static 'images/uiux.png' %}" alt="UI/UX Design">
+            <h2>UI/UX Design</h2>
+        </a>
+
+        <a href="{% url 'data_analytics_course' %}" class="course-card">
+            <img src="{% static 'images/data-analytics.png' %}" alt="Data Analytics">
+            <h2>Data Analytics</h2>
+        </a>
+
+    </div>
+
+</section>
+
 {% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}React JS Development | Scope India{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/react.css' %}">
+
+<section class="course-detail">
+
+```
+<div class="course-intro">
+
+    <h1>React JS Development</h1>
+
+    <p>
+        React JS Development is a frontend development course that focuses
+        on building modern, interactive, and responsive web applications.
+        Students learn JavaScript, React, components, state management,
+        API integration, Git, modern development tools, and practical
+        project development.
+    </p>
+
+</div>
+
+
+<h2 class="syllabus-title">Course Syllabus</h2>
+
+<div class="syllabus-container">
+
+    <div class="syllabus-card">
+        <h3>HTML & CSS</h3>
+        <p>
+            Learn HTML and CSS to create structured,
+            responsive, and modern web pages.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>JavaScript</h3>
+        <p>
+            Learn JavaScript fundamentals, functions, objects,
+            arrays, events, and modern JavaScript concepts.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>React Fundamentals</h3>
+        <p>
+            Understand React concepts, components, JSX,
+            props, and the fundamentals of React applications.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>React Hooks</h3>
+        <p>
+            Learn commonly used React hooks such as useState,
+            useEffect, and other important hooks.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>State Management</h3>
+        <p>
+            Understand component state, data flow,
+            and techniques for managing application state.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>API Integration</h3>
+        <p>
+            Learn how to connect React applications with
+            backend services and REST APIs.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Routing</h3>
+        <p>
+            Build multi-page experiences in React applications
+            using client-side routing concepts.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Git & GitHub</h3>
+        <p>
+            Learn version control and manage development
+            projects using Git and GitHub.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>AI Tools</h3>
+        <p>
+            Learn how modern AI tools can support coding,
+            debugging, learning, documentation, and development workflows.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Projects</h3>
+        <p>
+            Apply your React skills by developing practical
+            and interactive web applications.
+        </p>
+    </div>
+
+</div>
+
+
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>1. Who can join the React JS Development course?</h3>
+            <p>
+                The course is suitable for beginners, students, graduates,
+                and anyone interested in modern frontend development.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Do I need prior React experience?</h3>
+            <p>
+                No. The course starts with the required JavaScript
+                fundamentals before introducing React.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What is React used for?</h3>
+            <p>
+                React is used to build interactive user interfaces
+                and modern web applications.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Will I learn JavaScript?</h3>
+            <p>
+                Yes. JavaScript fundamentals and modern JavaScript
+                concepts are included as part of the course.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Will I learn React Hooks?</h3>
+            <p>
+                Yes. Important React hooks such as useState and useEffect
+                are covered during the course.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Will I learn how to connect APIs?</h3>
+            <p>
+                Yes. You will learn how React applications communicate
+                with backend services through APIs.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Will Git and GitHub be included?</h3>
+            <p>
+                Yes. You will learn Git and GitHub for version control
+                and managing development projects.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. Will AI tools be included in the course?</h3>
+            <p>
+                Yes. The course introduces modern AI tools that can assist
+                with coding, debugging, learning, documentation, and
+                development workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>9. Will the course include practical projects?</h3>
+            <p>
+                Yes. Practical exercises and projects are included
+                to help students apply their React development skills.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>10. How can I register for the course?</h3>
+            <p>
+                You can register by clicking the Register Now button below
+                and completing the registration form.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="registration-area">
+
+    <a href="{% url 'registration' %}" class="register-btn">
+        Register Now
+    </a>
+
+</div>
+
+</section>
+
+{% endblock %}

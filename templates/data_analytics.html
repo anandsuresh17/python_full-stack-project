@@ -1,0 +1,214 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Data Analytics | Scope India{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/data-analytics.css' %}">
+
+<section class="course-detail">
+
+```
+<div class="course-intro">
+
+    <h1>Data Analytics</h1>
+
+    <p>
+        Data Analytics is a career-focused course that teaches students how
+        to collect, process, analyze, and visualize data to generate useful
+        insights. Students learn Python, SQL, Excel, statistics, data
+        visualization, dashboards, data analysis tools, AI tools, and
+        practical projects.
+    </p>
+
+</div>
+
+<h2 class="syllabus-title">Course Syllabus</h2>
+
+<div class="syllabus-container">
+
+    <div class="syllabus-card">
+        <h3>Data Analytics Fundamentals</h3>
+        <p>
+            Understand the fundamentals of data analytics,
+            data types, data sources, and the data analysis process.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Excel</h3>
+        <p>
+            Learn spreadsheets, formulas, functions, sorting,
+            filtering, pivot tables, and data analysis techniques.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Python</h3>
+        <p>
+            Learn Python fundamentals and use Python
+            for data analysis and processing.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>NumPy & Pandas</h3>
+        <p>
+            Learn how to work with numerical data and
+            analyze datasets using NumPy and Pandas.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>SQL</h3>
+        <p>
+            Learn SQL queries, filtering, sorting, joins,
+            aggregation, and working with relational databases.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Statistics</h3>
+        <p>
+            Understand basic statistical concepts used
+            to analyze and interpret datasets.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Data Visualization</h3>
+        <p>
+            Learn how to represent data using charts,
+            graphs, and other effective visualization techniques.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Power BI</h3>
+        <p>
+            Learn to create interactive dashboards,
+            reports, and visualizations using Power BI.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>AI Tools</h3>
+        <p>
+            Learn how modern AI tools can support data analysis,
+            visualization, research, documentation, and workflows.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Projects</h3>
+        <p>
+            Apply your analytics skills by working with practical
+            datasets and developing real-world style projects.
+        </p>
+    </div>
+
+</div>
+
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>1. Who can join the Data Analytics course?</h3>
+            <p>
+                The course is suitable for beginners, students, graduates,
+                and anyone interested in learning data analysis.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Do I need prior programming experience?</h3>
+            <p>
+                No. The course starts with the fundamentals and gradually
+                introduces Python and other technical concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What technologies will I learn?</h3>
+            <p>
+                You will learn Excel, Python, NumPy, Pandas, SQL,
+                statistics, data visualization, Power BI, and AI tools.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Will I learn Python for data analysis?</h3>
+            <p>
+                Yes. Python fundamentals and commonly used Python
+                libraries for data analysis are included.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Will I learn SQL?</h3>
+            <p>
+                Yes. The course covers SQL queries, joins, filtering,
+                aggregation, and database concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Will I learn Power BI?</h3>
+            <p>
+                Yes. You will learn how to create reports,
+                dashboards, and interactive data visualizations.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Is statistics included in the course?</h3>
+            <p>
+                Yes. Basic statistical concepts used in data analysis
+                are included in the syllabus.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. Will AI tools be included in the course?</h3>
+            <p>
+                Yes. The course introduces modern AI tools that can assist
+                with data analysis, research, visualization, documentation,
+                and analytical workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>9. Will the course include practical projects?</h3>
+            <p>
+                Yes. Practical datasets and projects are included
+                to help students apply data analytics concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>10. How can I register for the course?</h3>
+            <p>
+                You can register by clicking the Register Now button below
+                and completing the registration form.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="registration-area">
+
+    <a href="{% url 'registration' %}" class="register-btn">
+        Register Now
+    </a>
+
+</div>
+
+</section>
+
+{% endblock %}

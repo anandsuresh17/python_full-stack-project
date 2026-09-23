@@ -11,4 +11,13 @@ urlpatterns = [
     path('new-password/',views.new_password,name='new_password'),
     path('forgot-password/',views.forgot_password,name='forgot_password'),
     path('logout/',views.logoutpage,name='logout'),
+    path('python/', views.python_course, name='python_course'),
+    path('java/', views.java_course, name='java_course'),
+    path('mern/', views.mern_course, name='mern_course'),
+    path('react/', views.react_course, name='react_course'),
+    path('testing/', views.testing_course, name='testing_course'),
+    path('uiux/', views.uiux_course, name='uiux_course'),
+    path('data-analytics/', views.data_analytics_course, name='data_analytics_course'),
+
+
     ]

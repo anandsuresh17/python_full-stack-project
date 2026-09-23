@@ -1,0 +1,215 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}MERN Stack Development | Scope India{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/mern.css' %}">
+
+<section class="course-detail">
+
+<div class="course-intro">
+
+    <h1>MERN Stack Development</h1>
+
+    <p>
+        MERN Stack Development is a full-stack web development course that
+        covers MongoDB, Express.js, React, and Node.js. Students learn
+        frontend and backend development, databases, REST APIs, Git,
+        modern development tools, and practical application development.
+    </p>
+
+</div>
+
+
+<h2 class="syllabus-title">Course Syllabus</h2>
+
+<div class="syllabus-container">
+
+    <div class="syllabus-card">
+        <h3>HTML & CSS</h3>
+        <p>
+            Learn HTML and CSS to create structured,
+            responsive, and modern web pages.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>JavaScript</h3>
+        <p>
+            Learn JavaScript fundamentals, functions, objects,
+            arrays, events, and modern JavaScript concepts.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>React</h3>
+        <p>
+            Build interactive user interfaces using React,
+            components, props, state, and hooks.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Node.js</h3>
+        <p>
+            Learn server-side JavaScript and build backend
+            applications using Node.js.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Express.js</h3>
+        <p>
+            Develop web servers and REST APIs using
+            the Express.js framework.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>MongoDB</h3>
+        <p>
+            Learn NoSQL database concepts, collections,
+            documents, queries, and database integration.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>REST APIs</h3>
+        <p>
+            Understand HTTP methods, JSON, API architecture,
+            and communication between frontend and backend.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Git & GitHub</h3>
+        <p>
+            Learn version control and manage development
+            projects using Git and GitHub.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>AI Tools</h3>
+        <p>
+            Learn how modern AI tools can support coding,
+            debugging, learning, documentation, and development workflows.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Projects</h3>
+        <p>
+            Apply your knowledge by developing practical
+            MERN stack web applications.
+        </p>
+    </div>
+
+</div>
+
+
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>1. Who can join the MERN Stack Development course?</h3>
+            <p>
+                The course is suitable for beginners, students, graduates,
+                and anyone interested in learning full-stack web development.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Do I need prior JavaScript experience?</h3>
+            <p>
+                No. The course starts with JavaScript fundamentals
+                and gradually introduces the MERN stack.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What does MERN stand for?</h3>
+            <p>
+                MERN stands for MongoDB, Express.js, React,
+                and Node.js.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Will I learn React?</h3>
+            <p>
+                Yes. React is covered for developing modern
+                and interactive frontend applications.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Will I learn backend development?</h3>
+            <p>
+                Yes. Node.js and Express.js are covered
+                for backend development and API creation.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Will I learn MongoDB?</h3>
+            <p>
+                Yes. You will learn MongoDB database concepts,
+                queries, collections, documents, and integration.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Will Git and GitHub be included?</h3>
+            <p>
+                Yes. You will learn Git and GitHub for version control
+                and managing development projects.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. Will AI tools be included in the course?</h3>
+            <p>
+                Yes. The course introduces modern AI tools that can assist
+                with coding, debugging, learning, documentation, and
+                development workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>9. Will the course include practical projects?</h3>
+            <p>
+                Yes. Practical exercises and projects are included
+                to help students apply their MERN stack skills.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>10. How can I register for the course?</h3>
+            <p>
+                You can register by clicking the Register Now button below
+                and completing the registration form.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="registration-area">
+
+    <a href="{% url 'registration' %}" class="register-btn">
+        Register Now
+    </a>
+
+</div>
+
+</section>
+
+{% endblock %}

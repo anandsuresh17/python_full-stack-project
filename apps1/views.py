@@ -668,4 +668,31 @@ def logoutpage(request):
 
     return redirect("login")
 
+def python_course(request):
+    return render(request, 'python.html')
+
+
+def java_course(request):
+    return render(request, 'java.html')
+
+
+def mern_course(request):
+    return render(request, 'mern.html')
+
+
+def react_course(request):
+    return render(request, 'react.html')
+
+
+def testing_course(request):
+    return render(request, 'testing.html')
+
+
+def uiux_course(request):
+    return render(request, 'uiux.html')
+
+
+def data_analytics_course(request):
+    return render(request, 'data_analytics.html')
+
 

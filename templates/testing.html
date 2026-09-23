@@ -1,0 +1,224 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Software Testing | Scope India{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/testing.css' %}">
+
+<section class="course-detail">
+
+```
+<div class="course-intro">
+
+    <h1>Software Testing</h1>
+
+    <p>
+        Software Testing is a career-focused course that teaches students
+        how to identify defects, verify software functionality, and ensure
+        the quality and reliability of applications. The course covers
+        manual testing, automation testing, test cases, API testing,
+        databases, Git, and practical testing projects.
+    </p>
+
+</div>
+
+
+<h2 class="syllabus-title">Course Syllabus</h2>
+
+<div class="syllabus-container">
+
+    <div class="syllabus-card">
+        <h3>Software Testing Fundamentals</h3>
+        <p>
+            Understand software testing concepts, objectives,
+            principles, and the software testing process.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Manual Testing</h3>
+        <p>
+            Learn manual testing techniques and how to verify
+            software functionality through structured testing.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>SDLC & STLC</h3>
+        <p>
+            Understand the Software Development Life Cycle and
+            Software Testing Life Cycle.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Test Cases</h3>
+        <p>
+            Learn how to write test scenarios, test cases,
+            test data, and test execution reports.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Bug Tracking</h3>
+        <p>
+            Learn defect identification, reporting, tracking,
+            and different stages of the bug life cycle.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Automation Testing</h3>
+        <p>
+            Understand automation testing concepts and learn how
+            automated tests can improve testing efficiency.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>API Testing</h3>
+        <p>
+            Learn API testing concepts, HTTP methods, requests,
+            responses, JSON, and API validation.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Database & SQL</h3>
+        <p>
+            Learn SQL queries and database validation techniques
+            used during software testing.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Git & GitHub</h3>
+        <p>
+            Learn version control basics and manage testing
+            and development projects using Git and GitHub.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>AI Tools</h3>
+        <p>
+            Learn how modern AI tools can support test case creation,
+            debugging, documentation, and testing workflows.
+        </p>
+    </div>
+
+    <div class="syllabus-card">
+        <h3>Projects</h3>
+        <p>
+            Apply testing concepts through practical testing
+            exercises and real-world style projects.
+        </p>
+    </div>
+
+</div>
+
+
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <h3>1. Who can join the Software Testing course?</h3>
+            <p>
+                The course is suitable for beginners, students, graduates,
+                and anyone interested in software quality and testing.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>2. Do I need programming experience?</h3>
+            <p>
+                No. The course begins with testing fundamentals and
+                gradually introduces technical testing concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>3. What is software testing?</h3>
+            <p>
+                Software testing is the process of evaluating an application
+                to identify defects and verify that it meets its requirements.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>4. Will I learn manual testing?</h3>
+            <p>
+                Yes. Manual testing concepts, test cases, test scenarios,
+                defect reporting, and test execution are included.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>5. Will automation testing be included?</h3>
+            <p>
+                Yes. The course introduces automation testing concepts
+                and automated testing workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>6. Will I learn API testing?</h3>
+            <p>
+                Yes. You will learn API testing concepts including
+                HTTP methods, requests, responses, and JSON.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>7. Will I learn SQL?</h3>
+            <p>
+                Yes. SQL and database validation concepts are included
+                as part of the testing syllabus.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>8. Will AI tools be included in the course?</h3>
+            <p>
+                Yes. The course introduces modern AI tools that can assist
+                with test cases, documentation, debugging, and testing workflows.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>9. Will the course include practical projects?</h3>
+            <p>
+                Yes. Practical exercises and projects are included
+                to help students apply testing concepts.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h3>10. How can I register for the course?</h3>
+            <p>
+                You can register by clicking the Register Now button below
+                and completing the registration form.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="registration-area">
+
+    <a href="{% url 'registration' %}" class="register-btn">
+        Register Now
+    </a>
+
+</div>
+
+</section>
+
+{% endblock %}
