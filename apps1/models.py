@@ -70,7 +70,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-
 class CourseEnrollment(models.Model):
 
     profile = models.ForeignKey(
@@ -87,8 +86,15 @@ class CourseEnrollment(models.Model):
 
     enrolled_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.profile} - {self.course}"
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "course"],
+                name="unique_profile_course"
+            )
+        ]
+def __str__(self):
+    return f"{self.profile} - {self.course}"
 
 
 class Contact(models.Model):

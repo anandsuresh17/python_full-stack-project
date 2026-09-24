@@ -51,13 +51,12 @@ def signup_course(request, course_id):
         id=course_id
     )
 
-    CourseEnrollment.objects.create(
+    enrollment, created = CourseEnrollment.objects.get_or_create(
         profile=profile,
         course=course
     )
 
     return redirect("sdpage")
-
 
 @login_required
 def search_courses(request):
@@ -199,8 +198,6 @@ def change_password(request):
         "change_password.html"
     )
 
-
-
 @login_required
 def reset_password_email(request):
 
@@ -239,40 +236,54 @@ If you did not request this, you can ignore this email.
         }
     )
 
-
 def reset_pass(request, uid, token):
 
     try:
         user = User.objects.get(id=uid)
+
     except User.DoesNotExist:
+
         return render(
             request,
             "newpass.html",
-            {"error": "Invalid password reset link."}
+            {
+                "error": "Invalid password reset link."
+            }
         )
 
+
     if not default_token_generator.check_token(user, token):
+
         return render(
             request,
             "newpass.html",
-            {"error": "Password reset link is invalid or expired."}
+            {
+                "error": "Password reset link is invalid or expired."
+            }
         )
+
 
     if request.method == "POST":
 
         password = request.POST.get("password")
         confirm_password = request.POST.get("confirm_password")
 
+
         if password != confirm_password:
+
             return render(
                 request,
                 "newpass.html",
-                {"error": "Passwords do not match."}
+                {
+                    "error": "Passwords do not match."
+                }
             )
+
 
         user.set_password(password)
         user.save()
 
         return redirect("logout")
+
 
     return render(request, "newpass.html")

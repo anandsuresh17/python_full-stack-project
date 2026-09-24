@@ -6,58 +6,290 @@ Sign In
 
 {% block content %}
 
-<h1>Student Sign In</h1>
+<div class="login-page">
 
-{% if success %}
-    <p>{{ success }}</p>
-{% endif %}
+    <div class="login-card">
 
-{% if error %}
-    <p>{{ error }}</p>
-{% endif %}
+        <h1>Student Sign In</h1>
 
-<form method="POST">
+        <p class="login-subtitle">
+            Sign in to access your student dashboard.
+        </p>
 
-    {% csrf_token %}
 
-    <label>Email</label>
-    <input
-        type="email"
-        name="email"
-        required
-    >
+        {% if success %}
+            <p class="success-message">
+                {{ success }}
+            </p>
+        {% endif %}
 
-    <br><br>
 
-    <label>Password</label>
-    <input
-        type="password"
-        name="password"
-        required
-    >
+        {% if error %}
+            <p class="error-message">
+                {{ error }}
+            </p>
+        {% endif %}
 
-    <br><br>
 
-    <label>
-        <input
-            type="checkbox"
-            name="keep_logged_in"
-        >
-        Keep me logged in
-    </label>
+        <form method="POST">
 
-    <br><br>
+            {% csrf_token %}
 
-    <button type="submit">
-        Sign In
-    </button>
 
-</form>
+            <div class="form-group">
 
-<p>
-    <a href="{% url 'forgot_password' %}">
-        Forgot Password?
-    </a>
-</p>
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                >
+
+            </div>
+
+
+            <label class="remember">
+
+                <input
+                    type="checkbox"
+                    name="keep_logged_in"
+                >
+
+                Keep me logged in
+
+            </label>
+
+
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+
+        <p class="forgot-password">
+
+            <a href="{% url 'forgot_password' %}">
+                Forgot Password?
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.login-page {
+    max-width: 450px;
+    margin: 60px auto;
+}
+
+
+.login-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-top: 4px solid #f97316;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+
+.login-card h1 {
+    text-align: center;
+    color: #172554;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+
+.login-subtitle {
+    text-align: center;
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+    color: #172554;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 13px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.form-group input:focus {
+    border-color: #f97316;
+}
+
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #555555;
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+
+.remember input {
+    accent-color: #f97316;
+}
+
+
+button {
+
+    width: 100%;
+
+    border: none;
+
+    background: #f97316;
+
+    color: #ffffff;
+
+    padding: 13px;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+button:hover {
+    background: #ea580c;
+}
+
+
+.success-message {
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    color: #15803d;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.error-message {
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #dc2626;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.forgot-password {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.forgot-password a {
+    color: #f97316;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+
+    .login-page {
+        margin: 30px 15px;
+    }
+
+    .login-card {
+        padding: 25px 20px;
+    }
+
+}
+
+</style>
 
 {% endblock %}

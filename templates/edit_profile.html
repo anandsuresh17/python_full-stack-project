@@ -1,66 +1,415 @@
 {% extends "layout.html" %}
 
-{% block title %}Edit Profile{% endblock %}
+{% block title %}
+Edit Profile
+{% endblock %}
 
 {% block content %}
 
-<h1>Edit Profile</h1>
+<div class="edit-page">
 
-<form method="POST" enctype="multipart/form-data">
+    <div class="edit-card">
 
-    {% csrf_token %}
+        <!-- Header -->
 
-    {{ form.as_p }}
+        <div class="edit-header">
 
-    <p>
-        <label for="country">
-            Country:
-        </label>
+            <div class="orange-line"></div>
 
-        <input
-            type="text"
-            name="country"
-            id="country"
-            value="{{ student.country }}"
-        >
-    </p>
+            <h1>Edit Profile</h1>
 
-    <p>
-        <label for="state">
-            State:
-        </label>
+            <p>
+                Update your personal information.
+            </p>
 
-        <input
-            type="text"
-            name="state"
-            id="state"
-            value="{{ student.state }}"
-        >
-    </p>
+        </div>
 
-    <p>
-        <label for="city">
-            City:
-        </label>
 
-        <input
-            type="text"
-            name="city"
-            id="city"
-            value="{{ student.city }}"
-        >
-    </p>
+        <!-- Form -->
 
-    <button type="submit">
-        Save Changes
-    </button>
+        <form method="POST" enctype="multipart/form-data">
 
-</form>
+            {% csrf_token %}
 
-<br>
 
-<a href="{% url 'profile' %}">
-    Cancel
-</a>
+            <div class="form-section">
+
+                {{ form.as_p }}
+
+
+                <!-- Country -->
+
+                <div class="form-group">
+
+                    <label for="country">
+                        Country
+                    </label>
+
+                    <input
+                        type="text"
+                        name="country"
+                        id="country"
+                        value="{{ student.country }}"
+                    >
+
+                </div>
+
+
+                <!-- State -->
+
+                <div class="form-group">
+
+                    <label for="state">
+                        State
+                    </label>
+
+                    <input
+                        type="text"
+                        name="state"
+                        id="state"
+                        value="{{ student.state }}"
+                    >
+
+                </div>
+
+
+                <!-- City -->
+
+                <div class="form-group">
+
+                    <label for="city">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        value="{{ student.city }}"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="edit-actions">
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+                <a href="{% url 'profile' %}">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+.edit-page {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: 35px auto;
+
+    padding: 0 15px;
+
+}
+
+
+/* Card */
+
+.edit-card {
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(7, 89, 133, 0.12);
+
+}
+
+
+/* Header */
+
+.edit-header {
+
+    background: #075985;
+
+    padding: 25px 30px;
+
+    text-align: center;
+
+}
+
+
+.orange-line {
+
+    width: 55px;
+
+    height: 4px;
+
+    background: #f97316;
+
+    border-radius: 5px;
+
+    margin: 0 auto 12px;
+
+}
+
+
+.edit-header h1 {
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    margin: 0 0 6px;
+
+}
+
+
+.edit-header p {
+
+    color: #dbeafe;
+
+    font-size: 13px;
+
+    margin: 0;
+
+}
+
+
+/* Form */
+
+.form-section {
+
+    padding: 25px 30px;
+
+}
+
+
+/* Django form */
+
+.form-section p {
+
+    margin: 0 0 15px;
+
+}
+
+
+.form-section label {
+
+    display: block;
+
+    color: #075985;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+}
+
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+
+    border-color: #f97316;
+
+}
+
+
+/* Country / State / City */
+
+.form-group {
+
+    margin-bottom: 15px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    color: #075985;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 6px;
+
+}
+
+
+/* File input */
+
+.form-section input[type="file"] {
+
+    padding: 8px;
+
+}
+
+
+/* Buttons */
+
+.edit-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 5px 30px 25px;
+
+}
+
+
+.edit-actions button,
+.edit-actions a {
+
+    flex: 1;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border: none;
+
+    padding: 11px;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* Save */
+
+.edit-actions button {
+
+    background: #f97316;
+
+    color: #ffffff;
+
+}
+
+
+.edit-actions button:hover {
+
+    background: #ea580c;
+
+}
+
+
+/* Cancel */
+
+.edit-actions a {
+
+    background: #075985;
+
+    color: #ffffff;
+
+}
+
+
+.edit-actions a:hover {
+
+    background: #0369a1;
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .edit-page {
+
+        margin: 20px auto;
+
+        padding: 0 10px;
+
+    }
+
+
+    .edit-header {
+
+        padding: 22px 15px;
+
+    }
+
+
+    .form-section {
+
+        padding: 20px 15px;
+
+    }
+
+
+    .edit-actions {
+
+        flex-direction: column;
+
+        padding: 5px 15px 20px;
+
+    }
+
+}
+
+</style>
 
 {% endblock %}

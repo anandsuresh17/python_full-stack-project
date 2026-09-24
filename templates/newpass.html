@@ -1,59 +1,225 @@
 {% extends "layout.html" %}
 
-{% block title %}Reset Password{% endblock %}
+{% block title %}
+Reset Password
+{% endblock %}
 
 {% block content %}
 
-<h1>Reset Password</h1>
+<div class="reset-page">
 
-{% if error %}
-    <p>{{ error }}</p>
-{% endif %}
+<div class="reset-card">
 
-<form method="POST">
+    <div class="reset-header">
 
-    {% csrf_token %}
+        <div class="orange-line"></div>
 
-    <p>
-        <label for="password">
-            New Password:
-        </label>
-        <br>
+        <h1>Reset Password</h1>
 
-        <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter new password"
-            required
-        >
-    </p>
+        <p>Create a new password for your account.</p>
 
-    <p>
-        <label for="confirm_password">
-            Confirm New Password:
-        </label>
-        <br>
+    </div>
 
-        <input
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            placeholder="Confirm new password"
-            required
-        >
-    </p>
 
-    <button type="submit">
-        Save New Password
-    </button>
+    <div class="reset-body">
 
-</form>
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+        {% endif %}
 
-<br>
 
-<a href="{% url 'login' %}">
-    Back to Login
-</a>
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <label for="password">
+                    New Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="confirm_password">
+                    Confirm New Password
+                </label>
+
+                <input
+                    type="password"
+                    name="confirm_password"
+                    id="confirm_password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="reset-btn"
+            >
+                Reset Password
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+.reset-page {
+    width: 100%;
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 0 15px;
+}
+
+.reset-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(7, 89, 133, 0.12);
+}
+
+
+/* Header */
+
+.reset-header {
+    background: #075985;
+    padding: 25px;
+    text-align: center;
+}
+
+.orange-line {
+    width: 55px;
+    height: 4px;
+    background: #f97316;
+    border-radius: 5px;
+    margin: 0 auto 12px;
+}
+
+.reset-header h1 {
+    color: #ffffff;
+    font-size: 27px;
+    margin: 0 0 6px;
+}
+
+.reset-header p {
+    color: #dbeafe;
+    font-size: 13px;
+    margin: 0;
+}
+
+
+/* Body */
+
+.reset-body {
+    padding: 25px 30px;
+}
+
+
+/* Error */
+
+.error-message {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    color: #075985;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #f97316;
+}
+
+
+/* Button */
+
+.reset-btn {
+    width: 100%;
+    border: none;
+    padding: 11px;
+    border-radius: 6px;
+    background: #f97316;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background: #ea580c;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .reset-page {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .reset-header {
+        padding: 22px 15px;
+    }
+
+    .reset-body {
+        padding: 20px 15px;
+    }
+
+}
+
+</style>
 
 {% endblock %}

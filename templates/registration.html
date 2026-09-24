@@ -1,70 +1,491 @@
+
 {% extends 'layout.html' %}
 
-{% block title %}
-Registration
-{% endblock %}
+{% block title %}Registration - Scope India{% endblock %}
 
 {% block content %}
 
+<div class="registration-page">
+
+    <div class="registration-header">
+        <p>JOIN SCOPE INDIA</p>
+        <h1>Student Registration</h1>
+        <span>
+            Register with us and take the next step towards your career.
+        </span>
+    </div>
+
+    <div class="registration-card">
+
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="{{ forms.fname.id_for_label }}">
+                        First Name
+                    </label>
+                    {{ forms.fname }}
+                    {% for error in forms.fname.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ forms.sname.id_for_label }}">
+                        Last Name
+                    </label>
+                    {{ forms.sname }}
+                    {% for error in forms.sname.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="{{ forms.gender.id_for_label }}">
+                        Gender
+                    </label>
+                    {{ forms.gender }}
+                    {% for error in forms.gender.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ forms.dob.id_for_label }}">
+                        Date of Birth
+                    </label>
+                    {{ forms.dob }}
+                    {% for error in forms.dob.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="{{ forms.email.id_for_label }}">
+                        Email
+                    </label>
+                    {{ forms.email }}
+                    {% for error in forms.email.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ forms.contact_number.id_for_label }}">
+                        Contact Number
+                    </label>
+                    {{ forms.contact_number }}
+                    {% for error in forms.contact_number.errors %}
+                        <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+            <!-- Country and State -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="country">
+                        Country
+                    </label>
+
+                    <select
+                        name="country"
+                        id="country"
+                        required
+                    >
+                        <option value="">
+                            Select Country
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="state">
+                        State
+                    </label>
+
+                    <select
+                        name="state"
+                        id="state"
+                        required
+                    >
+                        <option value="">
+                            Select State
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- City -->
+
+            <div class="form-group">
+
+                <label for="city">
+                    City
+                </label>
+
+                <select
+                    name="city"
+                    id="city"
+                    required
+                >
+                    <option value="">
+                        Select City
+                    </option>
+                </select>
+
+            </div>
+
+
+            <!-- Hobbies -->
+
+            <div class="form-group">
+
+                <label>Hobbies</label>
+
+                <div class="hobbies">
+
+                    {% for checkbox in forms.hobbies %}
+
+                        <label class="hobby-option">
+
+                            {{ checkbox.tag }}
+
+                            <span>
+                                {{ checkbox.choice_label }}
+                            </span>
+
+                        </label>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Profile Image -->
+
+            <div class="form-group">
+
+                <label for="{{ forms.image.id_for_label }}">
+                    Profile Image
+                </label>
+
+                {{ forms.image }}
+
+                {% for error in forms.image.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+
+            </div>
+
+
+            {% if forms.non_field_errors %}
+
+                <div class="error-message">
+                    {{ forms.non_field_errors }}
+                </div>
+
+            {% endif %}
+
+
+            <button type="submit">
+                Register Now
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
 <style>
-    .errorlist {
-        color: red;
-        list-style: none;
-        padding: 0;
-        margin: 5px 0;
+
+.registration-page {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+
+.registration-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+.registration-header p {
+    color: #f97316;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+
+.registration-header h1 {
+    color: #172554;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+
+.registration-header span {
+    color: #666666;
+    font-size: 14px;
+}
+
+
+.registration-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-top: 4px solid #f97316;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+    color: #172554;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 13px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #f97316;
+
+}
+
+
+.hobbies {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+
+.hobby-option {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 6px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 6px;
+
+    padding: 8px 12px;
+
+    color: #555555 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 400 !important;
+
+}
+
+
+.hobby-option input {
+
+    accent-color: #f97316;
+
+}
+
+
+small {
+
+    display: block;
+
+    color: #dc2626;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+
+}
+
+
+.error-message {
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #dc2626;
+
+    padding: 12px 15px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+}
+
+
+button {
+
+    width: 100%;
+
+    border: none;
+
+    background: #f97316;
+
+    color: #ffffff;
+
+    padding: 13px;
+
+    border-radius: 6px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+button:hover {
+
+    background: #ea580c;
+
+}
+
+
+@media (max-width: 650px) {
+
+    .registration-card {
+
+        padding: 25px 20px;
+
     }
 
-    select:invalid {
-        border: 1px solid red;
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
     }
+
+
+    .registration-header h1 {
+
+        font-size: 28px;
+
+    }
+
+}
+
 </style>
 
-<h1>Employee Registration Form</h1>
 
-<form method="POST" enctype="multipart/form-data">
-
-    {% csrf_token %}
-
-    {{ forms.as_p }}
-
-    <p>
-        <label>Country</label><br>
-
-        <select id="country" name="country" required>
-            <option value="">Select Country</option>
-        </select>
-    </p>
-
-    <p>
-        <label>State</label><br>
-
-        <select id="state" name="state" required>
-            <option value="">Select State</option>
-        </select>
-    </p>
-
-    <p>
-        <label>City</label><br>
-
-        <select id="city" name="city" required>
-            <option value="">Select City</option>
-        </select>
-    </p>
-
-    <button type="submit">Submit</button>
-
-</form>
-
+<!-- jQuery -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<!-- Country / State / City API -->
 
 <script>
 
 $(document).ready(function () {
 
+
     // Load Countries
+
     $.ajax({
+
         url: "https://countriesnow.space/api/v0.1/countries/states",
+
         type: "GET",
 
         success: function (response) {
@@ -72,29 +493,48 @@ $(document).ready(function () {
             $.each(response.data, function (index, country) {
 
                 $("#country").append(
+
                     "<option value='" + country.name + "'>" +
                     country.name +
                     "</option>"
+
                 );
 
             });
 
+        },
+
+        error: function () {
+
+            console.log("Failed to load countries.");
+
         }
+
     });
 
 
+
     // Load States
+
     $("#country").change(function () {
 
         let country = $(this).val();
+
 
         $("#state").html(
             "<option value=''>Select State</option>"
         );
 
+
         $("#city").html(
             "<option value=''>Select City</option>"
         );
+
+
+        if (country === "") {
+            return;
+        }
+
 
         $.ajax({
 
@@ -105,7 +545,9 @@ $(document).ready(function () {
             contentType: "application/json",
 
             data: JSON.stringify({
+
                 country: country
+
             }),
 
             success: function (response) {
@@ -113,28 +555,47 @@ $(document).ready(function () {
                 $.each(response.data.states, function (index, state) {
 
                     $("#state").append(
+
                         "<option value='" + state.name + "'>" +
                         state.name +
                         "</option>"
+
                     );
 
                 });
 
+            },
+
+            error: function () {
+
+                console.log("Failed to load states.");
+
             }
+
         });
 
     });
 
 
+
     // Load Cities
+
     $("#state").change(function () {
 
         let country = $("#country").val();
+
         let state = $("#state").val();
+
 
         $("#city").html(
             "<option value=''>Select City</option>"
         );
+
+
+        if (state === "") {
+            return;
+        }
+
 
         $.ajax({
 
@@ -145,8 +606,11 @@ $(document).ready(function () {
             contentType: "application/json",
 
             data: JSON.stringify({
+
                 country: country,
+
                 state: state
+
             }),
 
             success: function (response) {
@@ -154,20 +618,42 @@ $(document).ready(function () {
                 $.each(response.data, function (index, city) {
 
                     $("#city").append(
+
                         "<option value='" + city + "'>" +
                         city +
                         "</option>"
+
                     );
 
                 });
 
+            },
+
+            error: function () {
+
+                console.log("Failed to load cities.");
+
             }
+
         });
 
     });
+
 
 });
 
 </script>
 
+
 {% endblock %}
+
+
+Only the API-related part was restored:
+
+* Country → now a dropdown populated by the API.
+* State → loads after selecting country.
+* City → loads after selecting state.
+* jQuery → added before your API script.
+* Your existing registration design and Django form fields remain unchanged.
+
+After pasting this, **refresh the registration page and click the Country dropdown**. If countries appear, the API is working.

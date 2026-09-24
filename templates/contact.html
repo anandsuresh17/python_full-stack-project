@@ -1,23 +1,394 @@
 {% extends 'layout.html' %}
 
+{% block title %}Contact Us - Scope India{% endblock %}
+
 {% block content %}
 
-<h1>Contact Us</h1>
+<div class="contact-page">
 
-{% if success %} <p>{{ success }}</p>
-{% endif %}
-
-{% if error %} <p>{{ error }}</p>
-{% endif %}
-
-<form method="POST">
-    {% csrf_token %}
-
-{{ form.as_p }}
-
-<button type="submit">Submit</button>
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>
+            Have questions about our courses or training programs?
+            Get in touch with us and our team will be happy to help.
+        </p>
+    </div>
 
 
-</form>
+    <div class="contact-container">
+
+        <!-- Contact Information -->
+
+        <div class="contact-info">
+
+            <h2>Get In Touch</h2>
+
+            <p class="intro-text">
+                We are available at multiple locations across Kerala
+                and Tamil Nadu.
+            </p>
+
+
+            <div class="contact-item">
+
+                <h3>Our Locations</h3>
+
+                <p>
+                    Technopark TVM
+                </p>
+
+                <p>
+                    Thampanoor TVM
+                </p>
+
+                <p>
+                    Kochi, Kerala
+                </p>
+
+                <p>
+                    Nagercoil, Tamil Nadu
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Phone</h3>
+
+                <p>
+                    <a href="tel:+919745936073">
+                        9745936073 (TPK)
+                    </a>
+                </p>
+
+                <p>
+                    <a href="tel:+919745936073">
+                        9745936073 (TVM)
+                    </a>
+                </p>
+
+                <p>
+                    <a href="tel:+917592939481">
+                        7592939481 (EKM)
+                    </a>
+                </p>
+
+                <p>
+                    <a href="tel:+918075536185">
+                        8075536185 (NGL)
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Email</h3>
+
+                <p>
+                    <a
+                        href="mailto:info@scopeindia.org?subject=I%20want%20to%20know%20more%20about%20courses"
+                    >
+                        info@scopeindia.org
+                    </a>
+                </p>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <h3>Working Hours</h3>
+
+                <p>
+                    Monday - Saturday
+                    <span>9:00 AM - 6:00 PM</span>
+                </p>
+
+                <p>
+                    Sunday
+                    <span>Closed</span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Form -->
+
+        <div class="contact-form">
+
+            <h2>Send Us a Message</h2>
+
+            {% if success %}
+                <div class="success-message">
+                    {{ success }}
+                </div>
+            {% endif %}
+
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.contact-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+.contact-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.contact-header h1 {
+    color: #f97316;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.contact-header p {
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* Main Container */
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+
+/* Contact Information */
+
+.contact-info {
+    background-color: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.contact-info h2 {
+    color: #333333;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+
+.contact-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #fed7aa;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+
+.contact-item h3 {
+    color: #f97316;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+
+.contact-item p {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 5px;
+}
+
+
+.contact-item a {
+    color: #555555;
+    text-decoration: none;
+}
+
+
+.contact-item a:hover {
+    color: #f97316;
+}
+
+
+.contact-item span {
+    float: right;
+    font-weight: 600;
+    color: #444444;
+}
+
+
+/* Contact Form */
+
+.contact-form {
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.contact-form h2 {
+    color: #333333;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+.contact-form p {
+    margin-bottom: 18px;
+}
+
+
+.contact-form label {
+    display: block;
+    color: #444444;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: #f97316;
+}
+
+
+.contact-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+
+.contact-form button {
+    width: 100%;
+    border: none;
+    background-color: #f97316;
+    color: #ffffff;
+    padding: 13px 20px;
+    border-radius: 7px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.contact-form button:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+
+
+/* Messages */
+
+.success-message {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+    padding: 13px 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+.error-message {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 13px 15px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-header h1 {
+        font-size: 30px;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 25px;
+    }
+
+    .contact-item span {
+        float: none;
+        display: block;
+        margin-top: 3px;
+    }
+
+}
+
+</style>
 
 {% endblock %}

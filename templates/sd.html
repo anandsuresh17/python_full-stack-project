@@ -1,197 +1,407 @@
-```html
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
-{% block title %}Student Dashboard{% endblock %}
+{% block title %}Dashboard - Scope India{% endblock %}
 
 {% block content %}
 
-<h1>Student Dashboard</h1>
+<div class="dashboard">
 
-<p>
-    Welcome, {{ request.user.username }}!
-</p>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
+    <div class="dashboard-header">
 
-<!-- ========================= -->
-<!-- PROFILE -->
-<!-- ========================= -->
+        <div>
+            <h1>Welcome, {{ request.user.students.fname }}</h1>
+            <p>Explore our courses and manage your enrollments.</p>
+        </div>
 
-<a href="{% url 'profile' %}" class="profile-btn">
-    Profile
-</a>
+        <a href="{% url 'profile' %}" class="profile-btn">
+            Profile
+        </a>
 
-<br><br>
-
-
-<!-- ========================= -->
-<!-- SEARCH COURSES -->
-<!-- ========================= -->
-
-<h2>Search Courses</h2>
-
-<input
-    type="text"
-    id="searchCourse"
-    placeholder="Search for a course..."
->
-
-<br><br>
+    </div>
 
 
-<!-- ========================= -->
-<!-- AVAILABLE COURSES -->
-<!-- ========================= -->
+    <section class="course-section">
 
-<h2>Available Courses</h2>
+        <h2>Available Courses</h2>
 
-<table border="1">
+        <div class="search-area">
 
-    <thead>
-        <tr>
-            <th>Course Name</th>
-            <th>Duration</th>
-            <th>Fee</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+            <input
+                type="text"
+                id="searchCourse"
+                placeholder="Search courses..."
+            >
 
-    <tbody id="courseTable">
+        </div>
 
-        {% for course in courses %}
 
-        <tr>
+        <div class="table-container">
 
-            <td>
-                {{ course.course_name }}
-            </td>
+            <table id="courseTable">
 
-            <td>
-                {{ course.duration }}
-            </td>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-            <td>
-                ₹{{ course.fee }}
-            </td>
+                <tbody>
 
-            <td>
-                <a href="{% url 'signup_course' course.id %}">
-                    <button type="button">
-                        Sign Up
-                    </button>
+                    {% for course in courses %}
+
+                    <tr>
+
+                        <td>
+                            {{ course.course_name }}
+                        </td>
+
+                        <td>
+                            {{ course.duration }}
+                        </td>
+
+                        <td>
+                            <a
+                                href="{% url 'signup_course' course.id %}"
+                                class="signup-btn"
+                            >
+                                Sign Up
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="3">
+                            No courses available.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <section class="enrollment-section">
+
+        <h2>My Enrolled Courses</h2>
+
+        <div class="enrollment-container">
+
+            {% for enrollment in enrollments %}
+
+            <div class="enrollment-card">
+
+                <h3>
+                    {{ enrollment.course.course_name }}
+                </h3>
+
+                <p>
+                    <strong>Duration:</strong>
+                    {{ enrollment.course.duration }}
+                </p>
+
+                <a
+                    href="{% url 'delete_course' enrollment.id %}"
+                    class="delete-btn"
+                >
+                    Remove
                 </a>
-            </td>
 
-        </tr>
+            </div>
 
-        {% empty %}
+            {% empty %}
 
-        <tr>
-            <td colspan="4">
-                No courses available.
-            </td>
-        </tr>
+            <p class="no-enrollment">
+                You have not enrolled in any courses yet.
+            </p>
 
-        {% endfor %}
+            {% endfor %}
 
-    </tbody>
+        </div>
 
-</table>
+    </section>
 
-
-<br><br>
+</div>
 
 
-<!-- ========================= -->
-<!-- PICKED COURSES -->
-<!-- ========================= -->
+<style>
 
-<h2>Picked Courses</h2>
-
-<table border="1">
-
-    <thead>
-        <tr>
-            <th>Course Name</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        {% for enrollment in enrollments %}
-
-        <tr>
-
-            <td>
-                {{ enrollment.course.course_name }}
-            </td>
-
-        
-
-            <td>
-                <a href="{% url 'delete_course' enrollment.id %}">
-                    <button type="button">
-                        Delete
-                    </button>
-                </a>
-            </td>
-
-        </tr>
-
-        {% empty %}
-
-        <tr>
-            <td colspan="4">
-                You have not signed up for any course yet.
-            </td>
-        </tr>
-
-        {% endfor %}
-
-    </tbody>
-
-</table>
+.dashboard {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
 
-<br><br>
+.messages {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.message {
+    padding: 14px 18px;
+    border-radius: 8px;
+    background-color: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #c2410c;
+    text-align: center;
+    font-size: 14px;
+}
 
 
-<!-- ========================= -->
-<!-- LOGOUT -->
-<!-- ========================= -->
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
 
-<a href="{% url 'logout' %}">
-    Logout
-</a>
+.dashboard-header h1 {
+    color: #333333;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.dashboard-header p {
+    color: #666666;
+    font-size: 15px;
+}
 
 
-<!-- ========================= -->
-<!-- AJAX SEARCH -->
-<!-- ========================= -->
+.profile-btn {
+    background-color: #f97316;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 11px 24px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+
+
+.course-section,
+.enrollment-section {
+    margin-bottom: 55px;
+}
+
+
+.course-section h2,
+.enrollment-section h2 {
+    color: #333333;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+
+.search-area {
+    margin-bottom: 20px;
+}
+
+
+#searchCourse {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+}
+
+#searchCourse:focus {
+    border-color: #f97316;
+}
+
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+#courseTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+
+#courseTable th,
+#courseTable td {
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: left;
+}
+
+
+#courseTable th {
+    background-color: #fff7ed;
+    color: #333333;
+    font-size: 14px;
+}
+
+
+#courseTable td {
+    color: #555555;
+    font-size: 14px;
+}
+
+
+.signup-btn {
+    display: inline-block;
+    background-color: #f97316;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 17px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+
+.signup-btn:hover {
+    background-color: #ea580c;
+    transform: translateY(-1px);
+}
+
+
+/* Enrolled Courses */
+
+.enrollment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.enrollment-card {
+    width: 280px;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    border-radius: 10px;
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.08);
+    transition: all 0.3s ease;
+}
+
+
+.enrollment-card:hover {
+    transform: translateY(-4px);
+    border-color: #22c55e;
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.14);
+}
+
+
+.enrollment-card h3 {
+    color: #15803d;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+
+.enrollment-card p {
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 12px;
+    color: #dc2626;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
+
+
+.no-enrollment {
+    color: #666666;
+    font-size: 14px;
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 25px;
+    }
+
+    .course-section h2,
+    .enrollment-section h2 {
+        font-size: 22px;
+    }
+
+    .enrollment-card {
+        width: 100%;
+    }
+
+}
+
+</style>
+
 
 <script>
 
 const searchInput = document.getElementById("searchCourse");
 
-searchInput.addEventListener("keyup", function() {
+searchInput.addEventListener("input", function() {
 
-    const search = searchInput.value;
+    const search = this.value;
 
-    fetch(`/search-courses/?search=${encodeURIComponent(search)}`)
-
+    fetch("{% url 'search_courses' %}?search=" + encodeURIComponent(search))
         .then(response => response.json())
-
         .then(data => {
 
-            const table = document.getElementById("courseTable");
+            const tableBody = document.querySelector("#courseTable tbody");
 
-            table.innerHTML = "";
+            tableBody.innerHTML = "";
 
             if (data.courses.length === 0) {
 
-                table.innerHTML = `
+                tableBody.innerHTML = `
                     <tr>
-                        <td colspan="4">
+                        <td colspan="3">
                             No courses found.
                         </td>
                     </tr>
@@ -202,43 +412,24 @@ searchInput.addEventListener("keyup", function() {
 
             data.courses.forEach(course => {
 
-                table.innerHTML += `
-                    <tr>
+                const row = document.createElement("tr");
 
-                        <td>
-                            ${course.course_name}
-                        </td>
-
-                        <td>
-                            ${course.duration}
-                        </td>
-
-                        <td>
-                            ₹${course.fee}
-                        </td>
-
-                        <td>
-
-                            <a href="/signup/${course.id}/">
-
-                                <button type="button">
-                                    Sign Up
-                                </button>
-
-                            </a>
-
-                        </td>
-
-                    </tr>
+                row.innerHTML = `
+                    <td>${course.course_name}</td>
+                    <td>${course.duration}</td>
+                    <td>
+                        <a
+                            href="/signup/${course.id}/"
+                            class="signup-btn"
+                        >
+                            Sign Up
+                        </a>
+                    </td>
                 `;
 
+                tableBody.appendChild(row);
+
             });
-
-        })
-
-        .catch(error => {
-
-            console.error("Search error:", error);
 
         });
 
@@ -247,4 +438,3 @@ searchInput.addEventListener("keyup", function() {
 </script>
 
 {% endblock %}
-```

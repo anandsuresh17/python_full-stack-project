@@ -1,52 +1,558 @@
 {% extends 'layout.html' %}
 {% load static %}
 
-{% block title %}Home | Scope India{% endblock %}
+{% block title %}Scope India - Technology Training{% endblock %}
 
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-<section class="courses-section">
 
-    <h1>Explore Our Courses</h1>
+<!-- Hero Section -->
+
+<section class="hero-section">
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            CAREER-FOCUSED TECHNOLOGY TRAINING
+        </p>
+
+        <h1>
+            Build Skills.
+            <span>Build Your Career.</span>
+        </h1>
+
+        <p class="hero-description">
+            Learn practical, industry-focused technology skills through
+            hands-on training, real-world projects, and modern learning
+            approaches designed to prepare you for today's digital world.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#courses" class="hero-btn primary-btn">
+                Explore Courses
+            </a>
+
+            <a href="{% url 'contact' %}" class="hero-btn secondary-btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Why Choose Us -->
+
+<section class="why-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            WHY SCOPE INDIA
+        </p>
+
+        <h2>
+            Learn More Than Just Technology
+        </h2>
+
+        <p>
+            Our training focuses on practical skills, real-world
+            applications, and career-oriented learning.
+        </p>
+
+    </div>
+
+
+    <div class="why-container">
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                01
+            </div>
+
+            <h3>Practical Learning</h3>
+
+            <p>
+                Learn by working with practical examples, exercises,
+                and real-world development concepts.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                02
+            </div>
+
+            <h3>Industry Skills</h3>
+
+            <p>
+                Develop technology skills that are relevant to
+                today's software and digital industry.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                03
+            </div>
+
+            <h3>Project Experience</h3>
+
+            <p>
+                Apply your knowledge through projects that help
+                you understand how technology works in practice.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                04
+            </div>
+
+            <h3>Career Focus</h3>
+
+            <p>
+                Build technical confidence and prepare yourself
+                for opportunities in the technology field.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Courses Section -->
+
+<section class="courses-section" id="courses">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            OUR PROGRAMS
+        </p>
+
+        <h2>
+            Explore Our Courses
+        </h2>
+
+        <p>
+            Choose from career-focused technology programs and
+            develop practical skills for the modern industry.
+        </p>
+
+    </div>
+
 
     <div class="course-container">
 
+
+        <!-- Python -->
+
         <a href="{% url 'python_course' %}" class="course-card">
-            <img src="{% static 'images/python.png' %}" alt="Python Full Stack Development">
-            <h2>Python Full Stack Development</h2>
+
+            <img
+                src="{% static 'images/python.png' %}"
+                alt="Python Full Stack Development"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    Python Full Stack Development
+                </h3>
+
+                <p>
+                    Build modern web applications using Python,
+                    Django, databases, and frontend technologies.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+        <!-- Java -->
 
         <a href="{% url 'java_course' %}" class="course-card">
-            <img src="{% static 'images/java.png' %}" alt="Java Full Stack Development">
-            <h2>Java Full Stack Development</h2>
+
+            <img
+                src="{% static 'images/java.png' %}"
+                alt="Java Full Stack Development"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    Java Full Stack Development
+                </h3>
+
+                <p>
+                    Learn Java-based application development with
+                    modern frontend and backend technologies.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+        <!-- MERN -->
 
         <a href="{% url 'mern_course' %}" class="course-card">
-            <img src="{% static 'images/mern.png' %}" alt="MERN Stack Development">
-            <h2>MERN Stack Development</h2>
+
+            <img
+                src="{% static 'images/mern.png' %}"
+                alt="MERN Stack Development"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    MERN Stack Development
+                </h3>
+
+                <p>
+                    Develop modern full-stack applications using
+                    MongoDB, Express, React, and Node.js.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+        <!-- React -->
 
         <a href="{% url 'react_course' %}" class="course-card">
-            <img src="{% static 'images/react.png' %}" alt="React JS Development">
-            <h2>React JS Development</h2>
+
+            <img
+                src="{% static 'images/react.png' %}"
+                alt="React JS Development"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    React JS Development
+                </h3>
+
+                <p>
+                    Build interactive and responsive user interfaces
+                    using the React JavaScript library.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+        <!-- Testing -->
 
         <a href="{% url 'testing_course' %}" class="course-card">
-            <img src="{% static 'images/testing.png' %}" alt="Software Testing">
-            <h2>Software Testing</h2>
+
+            <img
+                src="{% static 'images/testing.png' %}"
+                alt="Software Testing"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    Software Testing
+                </h3>
+
+                <p>
+                    Learn software testing concepts, automation,
+                    quality assurance, and testing practices.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+        <!-- UI UX -->
 
         <a href="{% url 'uiux_course' %}" class="course-card">
-            <img src="{% static 'images/uiux.png' %}" alt="UI/UX Design">
-            <h2>UI/UX Design</h2>
+
+            <img
+                src="{% static 'images/uiux.png' %}"
+                alt="UI UX Design"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    UI/UX Design
+                </h3>
+
+                <p>
+                    Learn user interface and user experience design
+                    with practical design principles and tools.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
 
+
+        <!-- Data Analytics -->
+
         <a href="{% url 'data_analytics_course' %}" class="course-card">
-            <img src="{% static 'images/data-analytics.png' %}" alt="Data Analytics">
-            <h2>Data Analytics</h2>
+
+            <img
+                src="{% static 'images/data-analytics.png' %}"
+                alt="Data Analytics"
+            >
+
+            <div class="course-card-content">
+
+                <h3>
+                    Data Analytics
+                </h3>
+
+                <p>
+                    Learn data analysis, Python, SQL, visualization,
+                    statistics, and modern analytics tools.
+                </p>
+
+                <span>
+                    Explore Course →
+                </span>
+
+            </div>
+
         </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- Learning Approach -->
+
+<section class="approach-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            OUR APPROACH
+        </p>
+
+        <h2>
+            Learn. Practice. Build. Grow.
+        </h2>
+
+        <p>
+            A simple learning approach designed to turn knowledge
+            into practical skills.
+        </p>
+
+    </div>
+
+
+    <div class="approach-container">
+
+        <div class="approach-card">
+
+            <span>01</span>
+
+            <h3>Learn</h3>
+
+            <p>
+                Understand the fundamentals and concepts behind
+                the technology you are learning.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span>02</span>
+
+            <h3>Practice</h3>
+
+            <p>
+                Strengthen your knowledge through coding exercises,
+                practical tasks, and guided learning.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span>03</span>
+
+            <h3>Build</h3>
+
+            <p>
+                Apply your skills by developing projects based on
+                real-world requirements.
+            </p>
+
+        </div>
+
+
+        <div class="approach-card">
+
+            <span>04</span>
+
+            <h3>Grow</h3>
+
+            <p>
+                Continue improving your technical skills and
+                prepare for your professional journey.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- Career Section -->
+
+<section class="career-section">
+
+    <div class="section-heading">
+
+        <p class="section-label">
+            CAREER DEVELOPMENT
+        </p>
+
+        <h2>
+            Turn Learning Into Practical Skills
+        </h2>
+
+        <p>
+            Build a stronger foundation through practical learning,
+            project experience, and continuous improvement.
+        </p>
+
+    </div>
+
+
+    <div class="career-container">
+
+        <div class="career-item">
+
+            <h3>Technical Foundation</h3>
+
+            <p>
+                Develop a strong understanding of programming,
+                development tools, databases, and technology concepts.
+            </p>
+
+        </div>
+
+
+        <div class="career-item">
+
+            <h3>Real Projects</h3>
+
+            <p>
+                Practice your knowledge by working on projects that
+                connect concepts with practical applications.
+            </p>
+
+        </div>
+
+
+        <div class="career-item">
+
+            <h3>Professional Growth</h3>
+
+            <p>
+                Improve your confidence, problem-solving ability,
+                and readiness for professional opportunities.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Final CTA -->
+
+<section class="cta-section">
+
+    <div class="cta-content">
+
+        <p class="section-label">
+            START YOUR JOURNEY
+        </p>
+
+        <h2>
+            Ready to Build Your Future?
+        </h2>
+
+        <p>
+            Explore our courses and find a technology program
+            that matches your learning and career goals.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="#courses" class="hero-btn primary-btn">
+                View Courses
+            </a>
+            
+            {% if not user.is_authenticated %}
+    <a href="{% url 'registration' %}" class="hero-btn secondary-btn">
+        Register Now
+    </a>
+{% endif %}
+
+        </div>
 
     </div>
 

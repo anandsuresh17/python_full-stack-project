@@ -1,68 +1,504 @@
-.courses-section {
+/* =========================
+   GENERAL
+========================= */
+
+.hero-section,
+.why-section,
+.courses-section,
+.approach-section,
+.technology-section,
+.career-section,
+.cta-section {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.courses-section h1 {
-    text-align: center;
-    color: #f97316;
-    font-size: 32px;
-    margin-bottom: 40px;
-}
 
-.course-container {
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+    min-height: 470px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 25px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #fff7ed,
+        #ffffff
+    );
+    border-radius: 16px;
+    margin-bottom: 80px;
+    padding: 70px 30px;
+    box-sizing: border-box;
 }
 
-.course-card {
-    width: 260px;
-    min-height: 280px;
-    background-color: #ffffff;
-    border: 1px solid #eeeeee;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-label,
+.section-label {
+    color: #f97316;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 {
+    color: #333333;
+    font-size: 50px;
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.hero-content h1 span {
+    color: #f97316;
+    display: block;
+}
+
+.hero-description {
+    max-width: 750px;
+    margin: 0 auto 32px;
+    color: #666666;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 7px;
     text-decoration: none;
-    color: #222222;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-size: 15px;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
-.course-card img {
-width: 100%;
-height: 180px;
-object-fit: cover;
-display: block;
-margin-bottom: 15px;
+.primary-btn {
+    background-color: #f97316;
+    color: #ffffff;
 }
 
-.course-card h2 {
-    font-size: 18px;
-    line-height: 1.4;
+.primary-btn:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: #ffffff;
+    color: #f97316;
+    border: 1px solid #f97316;
+}
+
+.secondary-btn:hover {
+    background-color: #f97316;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.section-heading {
+    max-width: 750px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-heading h2 {
     color: #333333;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.section-heading p:not(.section-label) {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   WHY CHOOSE US
+========================= */
+
+.why-section {
+    margin-bottom: 90px;
+}
+
+.why-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.why-card {
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    padding: 28px 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    border-color: #f97316;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.12);
+}
+
+.why-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff7ed;
+    color: #f97316;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    color: #333333;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.why-card p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   COURSES
+========================= */
+
+.courses-section {
+    margin-bottom: 90px;
+}
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    justify-content: center;
+    gap: 25px;
+}
+.course-card {
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
 }
 
 .course-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     border-color: #f97316;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.2);
+    box-shadow: 0 8px 22px rgba(249, 115, 22, 0.15);
+}
+.course-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-.course-card:hover h2 {
-    color: #f97316;
+.course-card-content {
+    padding: 20px;
 }
+
+.course-card h3 {
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.course-card p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.course-card span {
+    color: #f97316;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   LEARNING APPROACH
+========================= */
+
+.approach-section {
+    background-color: #fafafa;
+    padding: 70px 30px;
+    margin-bottom: 90px;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.approach-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.approach-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #eeeeee;
+}
+
+.approach-card span {
+    color: #f97316;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.approach-card h3 {
+    color: #333333;
+    font-size: 19px;
+    margin: 12px 0;
+}
+
+.approach-card p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   TECHNOLOGY
+========================= */
+
+.technology-section {
+    margin-bottom: 90px;
+}
+
+.technology-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 16px;
+    padding: 60px 40px;
+}
+
+.technology-content h2 {
+    color: #333333;
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.technology-content p:not(.section-label) {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.technology-btn {
+    display: inline-block;
+    background-color: #f97316;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.technology-btn:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   CAREER
+========================= */
+
+.career-section {
+    margin-bottom: 90px;
+}
+
+.career-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.career-item {
+    padding: 28px;
+    border-left: 4px solid #f97316;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.career-item h3 {
+    color: #333333;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.career-item p {
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.cta-section {
+    margin-bottom: 30px;
+}
+
+.cta-content {
+    text-align: center;
+    background-color: #333333;
+    border-radius: 16px;
+    padding: 65px 30px;
+}
+
+.cta-content .section-label {
+    color: #fb923c;
+}
+
+.cta-content h2 {
+    color: #ffffff;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.cta-content p:not(.section-label) {
+    max-width: 650px;
+    margin: 0 auto 28px;
+    color: #dddddd;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .why-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .approach-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .career-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+}
+
 
 @media (max-width: 600px) {
-    .courses-section h1 {
-        font-size: 26px;
+
+    .hero-section {
+        min-height: 400px;
+        padding: 50px 20px;
+        margin-bottom: 60px;
     }
 
-    .course-card {
-        width: 100%;
-        max-width: 300px;
+    .hero-content h1 {
+        font-size: 32px;
     }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .why-container {
+        grid-template-columns: 1fr;
+    }
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-container {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-section {
+        padding: 50px 20px;
+    }
+
+    .technology-content {
+        padding: 45px 20px;
+    }
+
+    .technology-content h2 {
+        font-size: 27px;
+    }
+
+    .cta-content {
+        padding: 50px 20px;
+    }
+
+    .cta-content h2 {
+        font-size: 28px;
+    }
+
 }
