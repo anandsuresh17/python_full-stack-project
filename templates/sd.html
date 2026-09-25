@@ -6,143 +6,174 @@
 
 <div class="dashboard">
 
-    {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <div class="message">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
-    <div class="dashboard-header">
 
-        <div>
-            <h1>Welcome, {{ request.user.students.fname }}</h1>
-            <p>Explore our courses and manage your enrollments.</p>
-        </div>
+<div class="dashboard-header">
 
-        <a href="{% url 'profile' %}" class="profile-btn">
-            Profile
-        </a>
+    <div>
+        <h1>Welcome, {{ request.user.students.fname }}</h1>
+        <p>Explore our courses and manage your enrollments.</p>
+    </div>
+
+    <a href="{% url 'profile' %}" class="profile-btn">
+        Profile
+    </a>
+
+</div>
+
+
+<!-- Available Courses -->
+
+<section class="course-section">
+
+    <h2>Available Courses</h2>
+
+    <div class="search-area">
+
+        <input
+            type="text"
+            id="searchCourse"
+            placeholder="Search courses..."
+        >
 
     </div>
 
 
-    <section class="course-section">
+    <div class="table-container">
 
-        <h2>Available Courses</h2>
+        <table id="courseTable">
 
-        <div class="search-area">
+            <thead>
 
-            <input
-                type="text"
-                id="searchCourse"
-                placeholder="Search courses..."
-            >
+                <tr>
 
-        </div>
+                    <th>Course Name</th>
 
+                    <th>Duration</th>
 
-        <div class="table-container">
+                    <th>Fee</th>
 
-            <table id="courseTable">
+                    <th>Action</th>
 
-                <thead>
-                    <tr>
-                        <th>Course Name</th>
-                        <th>Duration</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+                </tr>
 
-                <tbody>
-
-                    {% for course in courses %}
-
-                    <tr>
-
-                        <td>
-                            {{ course.course_name }}
-                        </td>
-
-                        <td>
-                            {{ course.duration }}
-                        </td>
-
-                        <td>
-                            <a
-                                href="{% url 'signup_course' course.id %}"
-                                class="signup-btn"
-                            >
-                                Sign Up
-                            </a>
-                        </td>
-
-                    </tr>
-
-                    {% empty %}
-
-                    <tr>
-                        <td colspan="3">
-                            No courses available.
-                        </td>
-                    </tr>
-
-                    {% endfor %}
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
+            </thead>
 
 
-    <section class="enrollment-section">
+            <tbody>
 
-        <h2>My Enrolled Courses</h2>
+                {% for course in courses %}
 
-        <div class="enrollment-container">
+                <tr>
 
-            {% for enrollment in enrollments %}
+                    <td>
+                        {{ course.course_name }}
+                    </td>
 
-            <div class="enrollment-card">
+                    <td>
+                        {{ course.duration }}
+                    </td>
 
-                <h3>
-                    {{ enrollment.course.course_name }}
-                </h3>
+                    <td>
+                        ₹{{ course.fee }}
+                    </td>
 
-                <p>
-                    <strong>Duration:</strong>
-                    {{ enrollment.course.duration }}
-                </p>
+                    <td>
 
-                <a
-                    href="{% url 'delete_course' enrollment.id %}"
-                    class="delete-btn"
-                >
-                    Remove
-                </a>
+                        <a
+                            href="{% url 'signup_course' course.id %}"
+                            class="signup-btn"
+                        >
+                            Sign Up
+                        </a>
 
-            </div>
+                    </td>
 
-            {% empty %}
+                </tr>
 
-            <p class="no-enrollment">
-                You have not enrolled in any courses yet.
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="4">
+                        No courses available.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- My Enrolled Courses -->
+
+<section class="enrollment-section">
+
+    <h2>My Enrolled Courses</h2>
+
+    <div class="enrollment-container">
+
+        {% for enrollment in enrollments %}
+
+        <div class="enrollment-card">
+
+            <h3>
+                {{ enrollment.course.course_name }}
+            </h3>
+
+
+            <p>
+                <strong>Duration:</strong>
+                {{ enrollment.course.duration }}
             </p>
 
-            {% endfor %}
+
+            <p>
+                <strong>Fee:</strong>
+                ₹{{ enrollment.course.fee }}
+            </p>
+
+
+            <a
+                href="{% url 'delete_course' enrollment.id %}"
+                class="delete-btn"
+            >
+                Remove
+            </a>
 
         </div>
 
-    </section>
+
+        {% empty %}
+
+        <p class="no-enrollment">
+            You have not enrolled in any courses yet.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
 
 </div>
-
 
 <style>
 
@@ -159,6 +190,7 @@
     margin: 0 auto 25px;
 }
 
+
 .message {
     padding: 14px 18px;
     border-radius: 8px;
@@ -170,6 +202,8 @@
 }
 
 
+/* Dashboard Header */
+
 .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -177,17 +211,21 @@
     margin-bottom: 45px;
 }
 
+
 .dashboard-header h1 {
     color: #333333;
     font-size: 30px;
     margin-bottom: 8px;
 }
 
+
 .dashboard-header p {
     color: #666666;
     font-size: 15px;
 }
 
+
+/* Profile Button */
 
 .profile-btn {
     background-color: #f97316;
@@ -199,11 +237,14 @@
     transition: all 0.3s ease;
 }
 
+
 .profile-btn:hover {
     background-color: #ea580c;
     transform: translateY(-2px);
 }
 
+
+/* Sections */
 
 .course-section,
 .enrollment-section {
@@ -218,6 +259,8 @@
     margin-bottom: 25px;
 }
 
+
+/* Search */
 
 .search-area {
     margin-bottom: 20px;
@@ -234,10 +277,13 @@
     outline: none;
 }
 
+
 #searchCourse:focus {
     border-color: #f97316;
 }
 
+
+/* Course Table */
 
 .table-container {
     width: 100%;
@@ -272,6 +318,8 @@
     font-size: 14px;
 }
 
+
+/* Sign Up Button */
 
 .signup-btn {
     display: inline-block;
@@ -334,6 +382,8 @@
 }
 
 
+/* Remove Button */
+
 .delete-btn {
     display: inline-block;
     margin-top: 12px;
@@ -355,6 +405,8 @@
 }
 
 
+/* Mobile */
+
 @media (max-width: 600px) {
 
     .dashboard-header {
@@ -363,14 +415,17 @@
         gap: 20px;
     }
 
+
     .dashboard-header h1 {
         font-size: 25px;
     }
+
 
     .course-section h2,
     .enrollment-section h2 {
         font-size: 22px;
     }
+
 
     .enrollment-card {
         width: 100%;
@@ -380,58 +435,74 @@
 
 </style>
 
-
 <script>
 
 const searchInput = document.getElementById("searchCourse");
+
 
 searchInput.addEventListener("input", function() {
 
     const search = this.value;
 
-    fetch("{% url 'search_courses' %}?search=" + encodeURIComponent(search))
-        .then(response => response.json())
-        .then(data => {
 
-            const tableBody = document.querySelector("#courseTable tbody");
+    fetch(
+        "{% url 'search_courses' %}?search="
+        + encodeURIComponent(search)
+    )
 
-            tableBody.innerHTML = "";
+    .then(response => response.json())
 
-            if (data.courses.length === 0) {
+    .then(data => {
 
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="3">
-                            No courses found.
-                        </td>
-                    </tr>
-                `;
+        const tableBody =
+            document.querySelector("#courseTable tbody");
 
-                return;
-            }
 
-            data.courses.forEach(course => {
+        tableBody.innerHTML = "";
 
-                const row = document.createElement("tr");
 
-                row.innerHTML = `
-                    <td>${course.course_name}</td>
-                    <td>${course.duration}</td>
-                    <td>
-                        <a
-                            href="/signup/${course.id}/"
-                            class="signup-btn"
-                        >
-                            Sign Up
-                        </a>
+        if (data.courses.length === 0) {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="4">
+                        No courses found.
                     </td>
-                `;
+                </tr>
+            `;
 
-                tableBody.appendChild(row);
+            return;
+        }
 
-            });
+
+        data.courses.forEach(course => {
+
+            const row = document.createElement("tr");
+
+
+            row.innerHTML = `
+                <td>${course.course_name}</td>
+
+                <td>${course.duration}</td>
+
+                <td>₹${course.fee}</td>
+
+                <td>
+                    <a
+                        href="/signup/${course.id}/"
+                        class="signup-btn"
+                    >
+                        Sign Up
+                    </a>
+                </td>
+            `;
+
+
+            tableBody.appendChild(row);
 
         });
+
+    });
 
 });
 
